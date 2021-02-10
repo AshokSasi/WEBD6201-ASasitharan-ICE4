@@ -118,7 +118,7 @@
         let keys = Object.keys(localStorage);
         let index=1;
       for (const key of keys) {
-        
+        console.log(key);
         let contactData = localStorage.getItem(key);
 
         let contact = new core.Contact();
@@ -141,7 +141,7 @@
 
         //TODO - need to create an edit page
         $("button.edit").on("click", function(){
-          location.href = "edit.html#" + $(this).val(); // navigate to the edit page
+          console.log($(this).val());
          });
 
          
@@ -157,48 +157,6 @@
 
      
 
-    function displayEdit()
-    {
-
-      let key = location.hash.substring(1);
-      let contact = new core.Contact();
-
-      //Check to ensure key is not empty
-      if(key != "")
-      {
-        //get contact info from localStorage
-        contact.deserialize(localStorage.getItem(key));
-
-        //display contact information in the form
-        $("#fullName").val(contact.FullName);
-        $("#contactNumber").val(contact.ContactNumber);
-        $("#emailAddress").val(contact.EmailAddress);
-      }
-      $("#editButton").on("click",function(){
-        // check to see if key is empty
-        if(key == "")
-        {
-          // create a new key 
-           key = contact.FullName.substring(0,1) + Date.now();
-        }
-
-        //copy contact info from form to contact Object
-        contact.FullName = $("#fullName").val();
-        contact.ContactNumber = $("#contactNumber").val();
-        contact.EmailAddress = $("#emailAddress").val();
-
-        // add the contact info to localStorage
-        localStorage.setItem(key, contact.serialize());
-        // return to the contact list
-        location.href = "contact-list.html";
-        
-      });
-
-      $("#cancelButton").on("click", function(){
-        location.href = "contact-list.html"; 
-      });
-
-    }
     function Start()
     {
         console.log("App Started...");
@@ -224,9 +182,6 @@
             break;
           case "Contact-List":
             displayContactList();
-          break;
-          case "Edit":
-            displayEdit();
           break;
         }
         

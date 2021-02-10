@@ -182,14 +182,11 @@
            key = contact.FullName.substring(0,1) + Date.now();
         }
 
-        //copy contact info from form to contact Object
         contact.FullName = $("#fullName").val();
         contact.ContactNumber = $("#contactNumber").val();
         contact.EmailAddress = $("#emailAddress").val();
 
-        // add the contact info to localStorage
         localStorage.setItem(key, contact.serialize());
-        // return to the contact list
         location.href = "contact-list.html";
         
       });

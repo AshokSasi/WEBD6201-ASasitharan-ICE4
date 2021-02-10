@@ -166,38 +166,11 @@
       //Check to ensure key is not empty
       if(key != "")
       {
-        //get contact info from localStorage
         contact.deserialize(localStorage.getItem(key));
 
-        //display contact information in the form
         $("#fullName").val(contact.FullName);
-        $("#contactNumber").val(contact.ContactNumber);
-        $("#emailAddress").val(contact.EmailAddress);
+
       }
-      $("#editButton").on("click",function(){
-        // check to see if key is empty
-        if(key == "")
-        {
-          // create a new key 
-           key = contact.FullName.substring(0,1) + Date.now();
-        }
-
-        //copy contact info from form to contact Object
-        contact.FullName = $("#fullName").val();
-        contact.ContactNumber = $("#contactNumber").val();
-        contact.EmailAddress = $("#emailAddress").val();
-
-        // add the contact info to localStorage
-        localStorage.setItem(key, contact.serialize());
-        // return to the contact list
-        location.href = "contact-list.html";
-        
-      });
-
-      $("#cancelButton").on("click", function(){
-        location.href = "contact-list.html"; 
-      });
-
     }
     function Start()
     {
