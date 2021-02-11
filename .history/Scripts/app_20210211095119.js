@@ -117,35 +117,13 @@
 
     function testEmailAddress()
     {
-      
-      let messageArea = $("#messageArea");
 
-      let emailAddressPattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
-       
-      $("#emailAddress").on("blur", function()
-      {
-        if(!emailAddressPattern.test($(this).val()))
-        {
-          $(this).trigger("focus").trigger("select");
-          messageArea.show().addClass("alert alert-danger").text("Please enter valid Email Address.");
-        }
-        else
-        {
-            messageArea.removeAttr("class").hide();
-        }
-      });
-    }
-
-    function formValidation()
-    {
-      testFullName();
-      testContactNumber();
-      testEmailAddress();
     }
 
     function displayContact() {
       // form validation
-      formValidation();
+      testFullName();
+      testContactNumber();
 
       $("#sendButton").on("click", (event) => {
         if ($("#subscribeCheckbox")[0].checked) {
@@ -238,7 +216,7 @@
       }
 
       // form validation
-      formValidation();
+      testFullName();
       //edit button
       $("#editButton").on("click",function(){
         // check to see if key is empty

@@ -136,16 +136,11 @@
       });
     }
 
-    function formValidation()
-    {
+    function displayContact() {
+      // form validation
       testFullName();
       testContactNumber();
       testEmailAddress();
-    }
-
-    function displayContact() {
-      // form validation
-      formValidation();
 
       $("#sendButton").on("click", (event) => {
         if ($("#subscribeCheckbox")[0].checked) {
@@ -238,7 +233,9 @@
       }
 
       // form validation
-      formValidation();
+      testFullName();
+      testContactNumber();
+      testEmailAddress();
       //edit button
       $("#editButton").on("click",function(){
         // check to see if key is empty

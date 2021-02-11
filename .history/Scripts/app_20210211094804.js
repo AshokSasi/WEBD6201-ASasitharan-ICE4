@@ -99,14 +99,14 @@
     {
       let messageArea = $("#messageArea");
 
-      let contactNumberPattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+      let contactNumberPattern = /([A-Z][a-z]{1,25})+(\s|,|-)([A-Z][a-z]{1,25})+(\s|,|-)*/;
        
-      $("#contactNumber").on("blur", function()
+      $("#fullName").on("blur", function()
       {
-        if(!contactNumberPattern.test($(this).val()))
+        if(!fullNamePattern.test($(this).val()))
         {
           $(this).trigger("focus").trigger("select");
-          messageArea.show().addClass("alert alert-danger").text("Please enter valid Contact Number. Country code and area code are both optional.");
+          messageArea.show().addClass("alert alert-danger").text("Please enter valid Full Name. This must include at least a Capitalized first name followed by a Capitalized last name.");
         }
         else
         {
@@ -117,35 +117,12 @@
 
     function testEmailAddress()
     {
-      
-      let messageArea = $("#messageArea");
 
-      let emailAddressPattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
-       
-      $("#emailAddress").on("blur", function()
-      {
-        if(!emailAddressPattern.test($(this).val()))
-        {
-          $(this).trigger("focus").trigger("select");
-          messageArea.show().addClass("alert alert-danger").text("Please enter valid Email Address.");
-        }
-        else
-        {
-            messageArea.removeAttr("class").hide();
-        }
-      });
-    }
-
-    function formValidation()
-    {
-      testFullName();
-      testContactNumber();
-      testEmailAddress();
     }
 
     function displayContact() {
       // form validation
-      formValidation();
+      testFullName();
 
       $("#sendButton").on("click", (event) => {
         if ($("#subscribeCheckbox")[0].checked) {
@@ -238,7 +215,7 @@
       }
 
       // form validation
-      formValidation();
+      testFullName();
       //edit button
       $("#editButton").on("click",function(){
         // check to see if key is empty

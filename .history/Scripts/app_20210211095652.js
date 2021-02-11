@@ -99,7 +99,7 @@
     {
       let messageArea = $("#messageArea");
 
-      let contactNumberPattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+      let contactNumberPattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.|-]\d{4}$/;
        
       $("#contactNumber").on("blur", function()
       {

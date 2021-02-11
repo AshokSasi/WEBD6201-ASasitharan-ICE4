@@ -127,7 +127,7 @@
         if(!emailAddressPattern.test($(this).val()))
         {
           $(this).trigger("focus").trigger("select");
-          messageArea.show().addClass("alert alert-danger").text("Please enter valid Email Address.");
+          messageArea.show().addClass("alert alert-danger").text("Please enter valid Email Address. Country code and area code are both optional.");
         }
         else
         {
@@ -136,16 +136,10 @@
       });
     }
 
-    function formValidation()
-    {
-      testFullName();
-      testContactNumber();
-      testEmailAddress();
-    }
-
     function displayContact() {
       // form validation
-      formValidation();
+      testFullName();
+      testContactNumber();
 
       $("#sendButton").on("click", (event) => {
         if ($("#subscribeCheckbox")[0].checked) {
@@ -238,7 +232,8 @@
       }
 
       // form validation
-      formValidation();
+      testFullName();
+      testContactNumber();
       //edit button
       $("#editButton").on("click",function(){
         // check to see if key is empty
