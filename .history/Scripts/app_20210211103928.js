@@ -242,7 +242,6 @@
       //edit button
       $("#editButton").on("click",function(){
 
-        let messageArea = $("#messageArea");
         if(document.forms[0].checkValidity())
         {
         

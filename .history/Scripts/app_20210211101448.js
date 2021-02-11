@@ -242,33 +242,27 @@
       //edit button
       $("#editButton").on("click",function(){
 
-        let messageArea = $("#messageArea");
-        if(document.forms[0].checkValidity())
-        {
+        document.forms[0].checkValidity();
+
         
-            // // check to see if key is empty
-         if(key == "")
-         {
-           // create a new key 
-            key = contact.FullName.substring(0,1) + Date.now();
-         }
 
-         //copy contact info from form to contact Object
-         contact.FullName = $("#fullName").val();
-         contact.ContactNumber = $("#contactNumber").val();
-         contact.EmailAddress = $("#emailAddress").val();
+        // // check to see if key is empty
+        // if(key == "")
+        // {
+        //   // create a new key 
+        //    key = contact.FullName.substring(0,1) + Date.now();
+        // }
 
-         // add the contact info to localStorage
-         localStorage.setItem(key, contact.serialize());
+        // //copy contact info from form to contact Object
+        // contact.FullName = $("#fullName").val();
+        // contact.ContactNumber = $("#contactNumber").val();
+        // contact.EmailAddress = $("#emailAddress").val();
 
-         // return to the contact list
-        //location.href = "contact-list.html";
-        }
-        else
-        {
-          messageArea.show().addClass("alert alert-danger").text("Error: One or more fields in your form are empty.");
-        }
-
+        // // add the contact info to localStorage
+        // localStorage.setItem(key, contact.serialize());
+        // // return to the contact list
+        // location.href = "contact-list.html";
+        
       });
 
       $("#cancelButton").on("click", function(){

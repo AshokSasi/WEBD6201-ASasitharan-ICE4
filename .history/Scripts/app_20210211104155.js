@@ -242,7 +242,6 @@
       //edit button
       $("#editButton").on("click",function(){
 
-        let messageArea = $("#messageArea");
         if(document.forms[0].checkValidity())
         {
         
@@ -264,10 +263,7 @@
          // return to the contact list
         //location.href = "contact-list.html";
         }
-        else
-        {
-          messageArea.show().addClass("alert alert-danger").text("Error: One or more fields in your form are empty.");
-        }
+      
 
       });
 

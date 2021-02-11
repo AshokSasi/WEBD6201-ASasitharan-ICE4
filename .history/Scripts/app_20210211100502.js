@@ -99,7 +99,7 @@
     {
       let messageArea = $("#messageArea");
 
-      let contactNumberPattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+      let contactNumberPattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
        
       $("#contactNumber").on("blur", function()
       {
@@ -217,7 +217,7 @@
 
       let key = location.hash.substring(1);
       let contact = new core.Contact();
-     
+      console.log(key);
       //Check to ensure key is not empty
       if(key != "")
       {
@@ -241,34 +241,23 @@
       formValidation();
       //edit button
       $("#editButton").on("click",function(){
-
-        let messageArea = $("#messageArea");
-        if(document.forms[0].checkValidity())
+        // check to see if key is empty
+        if(key == "")
         {
+          // create a new key 
+           key = contact.FullName.substring(0,1) + Date.now();
+        }
+
+        //copy contact info from form to contact Object
+        contact.FullName = $("#fullName").val();
+        contact.ContactNumber = $("#contactNumber").val();
+        contact.EmailAddress = $("#emailAddress").val();
+
+        // add the contact info to localStorage
+        localStorage.setItem(key, contact.serialize());
+        // return to the contact list
+        location.href = "contact-list.html";
         
-            // // check to see if key is empty
-         if(key == "")
-         {
-           // create a new key 
-            key = contact.FullName.substring(0,1) + Date.now();
-         }
-
-         //copy contact info from form to contact Object
-         contact.FullName = $("#fullName").val();
-         contact.ContactNumber = $("#contactNumber").val();
-         contact.EmailAddress = $("#emailAddress").val();
-
-         // add the contact info to localStorage
-         localStorage.setItem(key, contact.serialize());
-
-         // return to the contact list
-        //location.href = "contact-list.html";
-        }
-        else
-        {
-          messageArea.show().addClass("alert alert-danger").text("Error: One or more fields in your form are empty.");
-        }
-
       });
 
       $("#cancelButton").on("click", function(){
